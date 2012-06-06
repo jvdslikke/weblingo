@@ -44,7 +44,7 @@
              (for [i (range (count word))]
          {:letter (get word i) 
           :correct (= (get (session/get :lingoword) i) (get word i)) 
-          :contains (contains? (session/get :lingoword) (get word i))}))))
+          :contains (not (= -1 (.indexOf (session/get :lingoword) (str (get word i)))))}))))
 
 (defn board-guess [board word]
   (let [rows (count board)

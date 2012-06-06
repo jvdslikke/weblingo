@@ -6,7 +6,8 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "weblingo"]]
+               [:title "weblingo"]
+               (include-css "/css/style.css")]
               [:body
                [:div#wrapper
                 [:h1 "weblingo"]
