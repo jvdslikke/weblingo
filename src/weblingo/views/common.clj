@@ -5,8 +5,8 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "weblingo"]
-               (include-css "/css/reset.css")]
+               [:title "weblingo"]]
               [:body
                [:div#wrapper
+                [:h1 "weblingo"]
                 content]]))

@@ -1,8 +1,8 @@
 (ns weblingo.views.welcome
-  (:require [weblingo.views.common :as common]
-            [noir.content.getting-started])
-  (:use [noir.core :only [defpage]]))
+  (:require [weblingo.views.common :as common])
+  (:use [noir.core :only [defpage]]
+        [weblingo.models.model]))
 
-(defpage "/welcome" []
-         (common/layout
-           [:p "Welcome to weblingo"]))
+(defpage "/random-word" []
+  (common/layout
+    [:p (get-random-word 5)]))
