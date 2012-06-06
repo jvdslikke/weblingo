@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+td.contains {
+	background-color: yellow;
+}
+
+td.correct {
+	background-color: red;
+}
