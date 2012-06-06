@@ -12,8 +12,13 @@
                 [:h1 "weblingo"]
                 content]]))
 
+(defn board-table-row-cell-tag [cell]
+  (keyword (str "td" 
+       (if (:correct cell) ".correct")
+       (if (:contains cell) ".contains"))))
+
 (defn board-table-row-cell [cell]
-  (let [htmlcell [:td]]
+  (let [htmlcell [(board-table-row-cell-tag cell)]]
     (if (contains? cell :letter)
       (conj htmlcell (:letter cell))
       (conj htmlcell "-"))))

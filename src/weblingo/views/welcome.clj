@@ -13,7 +13,7 @@
 (defpage [:post "/"] {:keys [reset guess]}
   (do 
     (if (= reset "1")
-      (model/reset-board!))
+      (model/reset-game!))
     (if (not (= nil guess))
       (common/game-layout (model/guess! guess)))
     (common/game-layout (model/get-board))))
