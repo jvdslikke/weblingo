@@ -38,13 +38,14 @@
   (let [table [:table.lingoBoard]]
     (apply conj table (board-table-rows board))))
 
-(defpartial game-layout [board]
+(defpartial game-layout [board status]
   (layout 
     [:form {:method "post"}
-     [:label {:for "wordguess"} "guess a word"]
-     [:input#wordguess {:type "text" :name "guess"}]
-     [:input {:type "submit" :value "guess"}]]
+      [:label {:for "wordguess"} "guess a word"]
+      [:input#wordguess {:type "text" :name "guess"}]
+      [:input {:type "submit" :value "guess"}]]
     [:form {:method "post"}
-     [:input {:type "hidden" :name "reset" :value "1"}]
-     [:input {:type "submit" :value "reset"}]]
-    [:div#game (board-table board)]))
+      [:input {:type "hidden" :name "reset" :value "1"}]
+      [:input {:type "submit" :value "reset"}]]
+    [:div#game (board-table board)]
+    [:p status]))
