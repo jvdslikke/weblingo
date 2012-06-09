@@ -6,11 +6,10 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "weblingo"]
-               (include-css "/css/style.css")]
+               [:title "Weblingo Created By Asim & Johan"]
+               (include-css "/css/LingoStyle.css")]
               [:body
                [:div#wrapper
-                [:h1 "weblingo"]
                 content]]))
 
 (defn board-table-row-cell-tag [cell]
@@ -35,17 +34,26 @@
   (vec (for [row board] (board-table-row row))))
 
 (defn board-table [board]
-  (let [table [:table.lingoBoard]]
+  (let [table [:table {:class "lingoBoard"}]]
     (apply conj table (board-table-rows board))))
 
 (defpartial game-layout [board status]
-  (layout 
-    [:form {:method "post"}
-      [:label {:for "wordguess"} "guess a word"]
-      [:input#wordguess {:type "text" :name "guess"}]
-      [:input {:type "submit" :value "guess"}]]
-    [:form {:method "post"}
-      [:input {:type "hidden" :name "reset" :value "1"}]
-      [:input {:type "submit" :value "reset"}]]
+  (layout    
+    [:div#container
+     [:div#header ]
+     [:div#content  
+	    [:form {:method "post"}
+	      [:label#lblTxt {:for "wordguess"} "Guess A Five-Letter Word "]
+	      [:p]
+	      [:input#wordguess {:type "text" :name "guess"}]
+	      [:input#btnGuess {:type "submit" :value "Guess"}]]
+	    [:form {:method "post"}
+	      [:input {:type "hidden" :name "reset" :value "1"}]
+	      [:input#btnReset {:type "submit" :value "Play Again"}]]
     [:div#game (board-table board)]
-    [:p status]))
+    [:p{:class "resultMessage"} status]
+    ]
+    [:div#footer]
+    ]
+   )
+)
