@@ -12,7 +12,7 @@
       (apply conj [first] rest))))
 
 (defn row-guessed? [row]
-  (= (count (filter empty? row)) 0))
+  (> (count (filter #(not (empty? %)) row)) 1))
 
 (defn board-create-evaluate-row [length guess word]
   (vec (take length 
